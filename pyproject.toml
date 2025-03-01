@@ -59,6 +59,7 @@ Repository = "https://github.com/lmmx/mdbed"
 ignore = [
     "C408",
     "C901",
+    "D107",
     "E501",
     "E722",
     "E741",
