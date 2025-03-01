@@ -1,0 +1,88 @@
+[build-system]
+build-backend = "pdm.backend"
+requires = [
+  "pdm-backend"
+]
+
+[project]
+name = "lit-embs"
+version = "0.1.0"
+description = "Embed markdown documents and compare their nodes."
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python",
+]
+readme = "README.md"
+authors = [
+  {name = "Louis Maddox", email = "louismmx@gmail.com"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "polars-fastembed>=0.1.2",
+]
+
+[project.license]
+text = "MIT"
+
+[project.optional-dependencies]
+dev = [
+  "pdm-bump>=0.9.10",
+  "pdm>=2.22.3",
+  "pre-commit>=4.1.0",
+  "pytest>=8.3.4"
+]
+polars = [
+  "polars>=1.21.0"
+]
+polars-lts-cpu = [
+  "polars-lts-cpu>=1.21.0"
+]
+
+[project.scripts]
+mdbed = "mdbed.cli:mdbed"
+
+[project.urls]
+Homepage = "https://github.com/lmmx/mdbed"
+Repository = "https://github.com/lmmx/mdbed"
+
+[tool.ruff.lint]
+ignore = [
+    "C408",
+    "C901",
+    "E501",
+    "E722",
+    "E741",
+]
+select = [
+    "C",
+    "D",
+    "E",
+    "F",
+    "I",
+    "UP",
+    "W",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [
+    "E401",
+    "F401",
+]
+
+[tool.tomlsort]
+all = true
+in_place = true
+spaces_before_inline_comment = 2
+spaces_indent_inline_array = 4
+trailing_comma_inline_array = true
