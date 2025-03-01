@@ -4,7 +4,6 @@
 from pathlib import Path
 
 import polars as pl
-
 from mdbed import (
     compute_embeddings,
     find_similar_nodes,
@@ -31,7 +30,6 @@ def main():
     # Get markdown files
     files_df = get_files(
         paths=[str(DATA_DIR)],
-        filter_expr='{name}.str.ends_with(".md")',
         recursive=True,
         merge_all=True,
     )

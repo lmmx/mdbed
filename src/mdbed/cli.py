@@ -103,7 +103,7 @@ def mdbed():
 )
 @click.option(
     "-f",
-    "--filter",
+    "--filter-expr",
     type=str,
     help="Filter expression for files (e.g. '{name}.str.ends_with(\".md\")')",
 )
@@ -114,16 +114,12 @@ def embed(
     model: str,
     gpu: bool,
     output: str | None,
-    filter: str | None,
+    filter_expr: str | None,
 ) -> None:
     """Embed markdown files and find similar nodes."""
     # Validate paths
     if not paths:
         paths = ["."]
-
-    # Default filter to only markdown files if not provided
-    if filter is None:
-        filter = '{name}.str.ends_with(".md")'
 
     # Register model
     click.echo(f"Registering model: {model}", err=True)
@@ -133,7 +129,7 @@ def embed(
     click.echo(f"Finding files in {paths}", err=True)
     files_df = get_files(
         paths=list(paths),
-        filter_expr=filter,
+        filter_expr=filter_expr,
         recursive=recursive,
         merge_all=True,
     )

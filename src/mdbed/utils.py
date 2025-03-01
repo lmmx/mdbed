@@ -31,26 +31,45 @@ def get_files(
     if isinstance(paths, str):
         paths = [paths]
 
-    # Build arguments for ls
-    ls_args = {
-        "paths": paths,
-        "with_filter": filter_expr,
-        "recursive": recursive,
-        "merge_all": merge_all,
-        "as_path": True,
-        "keep": "path,name,is_dir",
-    }
+    # Build ls arguments - note that paths need to be unpacked as *args
+    path_objects = [Path(p) for p in paths]
 
-    # Get files
-    result = ls(**ls_args)
+    # Call ls with correct parameter mapping
+    result = ls(
+        *path_objects,  # Unpack paths as positional arguments
+        R=recursive,  # Use R for recursive instead of 'recursive'
+        with_filter=filter_expr,  # This parameter exists in ls
+        merge_all=merge_all,
+        as_path=True,
+        keep="path,name,is_dir",
+        to_dict=True,  # Always get dict result for consistent handling
+    )
 
-    # If merge_all is True, result is a DataFrame
-    # Otherwise, it's a dict of DataFrames
-    if not merge_all and isinstance(result, dict):
+    # Handle the result based on merge_all setting
+    if merge_all:
+        # With merge_all, we should get a single DataFrame in the "" key
+        if "" in result:
+            return result[""]
+        elif len(result) == 1:
+            # If there's only one source, return that DataFrame
+            return next(iter(result.values()))
+        else:
+            # Merge manually if needed
+            dfs = []
+            for source, df in result.items():
+                if not df.is_empty():
+                    dfs.append(df.with_columns(pl.lit(source).alias("source")))
+
+            if not dfs:
+                return pl.DataFrame({"path": [], "name": [], "is_dir": []})
+
+            return pl.concat(dfs)
+    else:
+        # If not merging, manually process the dict result
         if not result:
             return pl.DataFrame({"path": [], "name": [], "is_dir": []})
 
-        # Merge all DataFrames manually
+        # Merge all DataFrames manually with source column
         dfs = []
         for source, df in result.items():
             if not df.is_empty():
@@ -61,7 +80,7 @@ def get_files(
 
         return pl.concat(dfs)
 
-    return result
+    return pl.DataFrame({"path": [], "name": [], "is_dir": []})
 
 
 def read_file_content(file_path: str | Path) -> str:

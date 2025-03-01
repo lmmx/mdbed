@@ -23,11 +23,13 @@ classifiers = [
     "Programming Language :: Python",
 ]
 dependencies = [
+    "click>=8.1.8",
+    "comrak>=0.0.5",
     "polars-fastembed>=0.1.2",
-    "polars-ls>=0.5.3",
+    "polars-ls>=0.5.4",
 ]
 description = "Embed markdown documents and compare their nodes."
-name = "lit-embs"
+name = "mdbed"
 readme = "README.md"
 requires-python = ">=3.10"
 version = "0.1.0"

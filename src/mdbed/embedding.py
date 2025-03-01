@@ -98,6 +98,7 @@ def find_similar_nodes(
     # For each node, find similar nodes
     for i in range(n_rows):
         query_embedding = df.select(embedding_column).row(i)[0]
+        breakpoint()
 
         # Convert single embedding to DataFrame for retrieval
         result = df.fastembed.retrieve(
