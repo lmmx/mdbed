@@ -1,13 +1,13 @@
 [build-system]
 build-backend = "pdm.backend"
 requires = [
-  "pdm-backend"
+    "pdm-backend",
 ]
 
 [project]
-name = "lit-embs"
-version = "0.1.0"
-description = "Embed markdown documents and compare their nodes."
+authors = [
+    {email = "louismmx@gmail.com", name = "Louis Maddox"},
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -19,34 +19,33 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python",
 ]
-readme = "README.md"
-authors = [
-  {name = "Louis Maddox", email = "louismmx@gmail.com"}
-]
-requires-python = ">=3.10"
 dependencies = [
     "polars-fastembed>=0.1.2",
 ]
+description = "Embed markdown documents and compare their nodes."
+name = "lit-embs"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.1.0"
 
 [project.license]
 text = "MIT"
 
 [project.optional-dependencies]
 dev = [
-  "pdm-bump>=0.9.10",
-  "pdm>=2.22.3",
-  "pre-commit>=4.1.0",
-  "pytest>=8.3.4"
+    "pdm-bump>=0.9.10",
+    "pdm>=2.22.3",
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.4",
 ]
 polars = [
-  "polars>=1.21.0"
+    "polars>=1.21.0",
 ]
 polars-lts-cpu = [
-  "polars-lts-cpu>=1.21.0"
+    "polars-lts-cpu>=1.21.0",
 ]
 
 [project.scripts]

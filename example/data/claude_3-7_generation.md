@@ -9,7 +9,7 @@
 - **Explosive number of ways to partition docs**
   - Why this necessitates an **opinionated** model of documentation
   - Current approaches and their limitations
-  
+
 - **The refactoring challenge**
   - How code changes break documentation links
   - The need for stable references across code reorganization
