@@ -6,12 +6,7 @@ from pathlib import Path
 
 import polars as pl
 
-try:
-    from polars_ls import ls  # type: ignore
-except ImportError:
-    raise ImportError(
-        "polars-ls is required. Install with `pip install polars-ls[polars]`",
-    )
+from pols import ls  # type: ignore
 
 
 def get_files(

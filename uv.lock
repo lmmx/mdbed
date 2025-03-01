@@ -26,6 +26,15 @@ wheels = [
 ]
 
 [[package]]
+name = "argh"
+version = "0.31.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/4f/34/bc0b3577a818b4b70c6e318d23fe3c81fc3bb25f978ca8a3965cd8ee3af9/argh-0.31.3.tar.gz", hash = "sha256:f30023d8be14ca5ee6b1b3eeab829151d7bbda464ae07dc4dd5347919c5892f9", size = 57570 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d2/52/fcd83710b6f8786df80e5d335882d1b24d1f610f397703e94a6ffb0d6f66/argh-0.31.3-py3-none-any.whl", hash = "sha256:2edac856ff50126f6e47d884751328c9f466bacbbb6cbfdac322053d94705494", size = 44844 },
+]
+
+[[package]]
 name = "blinker"
 version = "1.9.0"
 source = { registry = "https://pypi.org/simple" }
@@ -208,6 +217,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "polars-fastembed" },
+    { name = "polars-ls" },
 ]
 
 [package.optional-dependencies]
@@ -230,6 +240,7 @@ requires-dist = [
     { name = "pdm-bump", marker = "extra == 'dev'", specifier = ">=0.9.10" },
     { name = "polars", marker = "extra == 'polars'", specifier = ">=1.21.0" },
     { name = "polars-fastembed", specifier = ">=0.1.2" },
+    { name = "polars-ls", specifier = ">=0.5.3" },
     { name = "polars-lts-cpu", marker = "extra == 'polars-lts-cpu'", specifier = ">=1.21.0" },
     { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=4.1.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.4" },
@@ -510,6 +521,18 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/5f/b7/9cbeab07442344bcd66c90e2bbf9ad389305024fad809976bac8ed9b220b/polars_fastembed-0.1.2-cp38-abi3-manylinux_2_28_i686.whl", hash = "sha256:0060207d6a28096244f9712739ea645d09552bbf16146332d44f0146e77957f0", size = 16279148 },
     { url = "https://files.pythonhosted.org/packages/c4/1b/91da9d77e02589e005741e99c361a7bc433fee84838e3eabb34eb66f5a0f/polars_fastembed-0.1.2-cp38-abi3-manylinux_2_34_ppc64le.whl", hash = "sha256:3e52f3f804ad6f3d6e96ad156096425c6284efea76b17f69733ff00dd328b586", size = 16080534 },
     { url = "https://files.pythonhosted.org/packages/46/3a/98a4cc8364207597e952a7236f0dd8d5324696ed237500af543ec17e5c18/polars_fastembed-0.1.2-cp38-abi3-win_amd64.whl", hash = "sha256:e72ff798e929747361c97cef16026ad4f1323465dc0fdd92eebec010bc73c16f", size = 10934167 },
+]
+
+[[package]]
+name = "polars-ls"
+version = "0.5.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "argh" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/eb/ad/63d0a04784938d57978db26f7fb73c24ed9ab2c8469832367b7932a9d2fb/polars_ls-0.5.3.tar.gz", hash = "sha256:7eb32ada796f521c4c467fb01faffc41697d7cfc4cf3e922bad1331a79cb93fb", size = 21484 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ad/08/cb61c091370427996ad6aa36518edc49ae86793e9a0e7ecc16bd682d535e/polars_ls-0.5.3-py3-none-any.whl", hash = "sha256:8fafcca22c7795555892ca062681ab00ce8c8de4d40d0fd412413e8a346a574d", size = 19111 },
 ]
 
 [[package]]
