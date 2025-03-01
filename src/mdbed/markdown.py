@@ -128,15 +128,12 @@ def parse_markdown(content: str) -> list[dict]:
     return parser.get_nodes_with_text()
 
 
-def markdown_to_dataframe(
-    content: str, file_path: str | None = None, deduplicate: bool = True
-) -> pl.DataFrame:
+def markdown_to_dataframe(content: str, file_path: str | None = None) -> pl.DataFrame:
     """Convert markdown content to a DataFrame of nodes.
 
     Args:
         content: Markdown content
         file_path: Optional file path to include in DataFrame
-        deduplicate: Whether to duplicate (default: True)
 
     Returns:
         DataFrame with node information
@@ -169,6 +166,4 @@ def markdown_to_dataframe(
         )
     else:
         df = pl.DataFrame(node_data)
-    if deduplicate:
-        df = df.unique("text", maintain_order=True)
     return df
