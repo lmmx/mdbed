@@ -24,6 +24,7 @@ classifiers = [
 ]
 dependencies = [
     "polars-fastembed>=0.1.2",
+    "polars-ls>=0.5.3",
 ]
 description = "Embed markdown documents and compare their nodes."
 name = "lit-embs"
