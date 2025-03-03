@@ -4,6 +4,7 @@
 from pathlib import Path
 
 import polars as pl
+
 from mdbed import (
     compute_embeddings,
     find_similar_nodes,
